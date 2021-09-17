@@ -14,17 +14,24 @@ pub struct ClientConfig {
     pub bootstrap_node: bool,
 }
 
-pub struct Client {}
+pub struct Client {
+    // TODO: This field should go into the Event Loop module.
+    swarm: Swarm<core::ComposedBehaviour>,
+}
 
 impl Default for Client {
     fn default() -> Self {
-        Self {}
+        Self {
+            swarm: core::create_peer(),
+        }
     }
 }
 
 impl Client {
     pub fn new() -> Self {
-        Self::default()
+        Self {
+            swarm: core::create_peer(),
+        }
     }
 
     pub fn with_config(config: ClientConfig) -> Self {
@@ -33,7 +40,9 @@ impl Client {
             info!("This is a bootstrap node.");
         }
 
-        Self {}
+        Self {
+            swarm: core::create_peer(),
+        }
     }
 
     pub fn listen(&mut self, addr: Option<Multiaddr>) -> Result<(), BoxedError> {
@@ -62,7 +71,9 @@ enum ClientEvent {
 
 fn handle_client_event(client: &mut Client, event: ClientEvent) -> Result<(), BoxedError> {
     match event {
-        ClientEvent::StartListening(addr) => todo!(),
+        ClientEvent::StartListening(addr) => {
+            // Here, we should pass the `addr` to the EventLoop.
+        }
         ClientEvent::DialAnother(addr) => todo!(),
         ClientEvent::StartProviding => todo!(),
         ClientEvent::SeekSomething => todo!(),

@@ -3,11 +3,11 @@ use super::*;
 
 #[derive(NetworkBehaviour)]
 #[behaviour(event_process = false, out_event = "ComposedEvent")]
-struct ComposedBehaviour {
+pub struct ComposedBehaviour {
     kademlia: Kademlia<MemoryStore>,
 }
 
-enum ComposedEvent {
+pub enum ComposedEvent {
     Kademlia(KademliaEvent),
 }
 
@@ -17,7 +17,7 @@ impl From<KademliaEvent> for ComposedEvent {
     }
 }
 
-fn create_peer() -> Swarm<ComposedBehaviour> {
+pub fn create_peer() -> Swarm<ComposedBehaviour> {
     // Generate IDs.
     let key = identity::Keypair::generate_ed25519();
     let peerid = PeerId::from_public_key(key.public());
