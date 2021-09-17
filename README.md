@@ -10,11 +10,11 @@
     4. The `Client` API will interact with this `EventLoop`.
 
 - Requirements
-    Green is important, yellow is not so important.
-    1. We want to start a libp2p node, when we are in farming mode.
-    2. We want to start the node on a seperate thread, maybe?
-    3. When the farmer starts, it should load the details of the chunks in its plot and announce itself as a `provider` for those chunks.
-    4. We want the node to join an overlay network, which means, we basically want it to connect with a few special nodes that are always up and running, called bootnodes.
+    <font color="green">Green</font> is important, <font color="yellow">yellow</font> is not so important.
+    1. <font color="green">We want to start a libp2p node, when we are in farming mode.</font>
+	2. <font color="yellow">We want to start the node on a seperate thread, maybe? </font>    
+	3. <font color="yellow">When the farmer starts, it should load the details of the chunks in its plot and announce itself as a `provider` for those chunks.</font>
+    4. <font color="green">We want the node to join an overlay network, which means, we basically want it to connect with a few special nodes that are always up and running, called bootnodes.</font>
 
 - API methods
     ### Implementation Details
