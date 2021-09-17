@@ -1,5 +1,5 @@
 [package]
-name = "kademlia-file-sharing"
+name = "libp2p-kad-wrapper"
 authors = ["Tejas Sanap <sanap.tejas@gmail.com>"]
 version = "0.1.0"
 edition = "2021"

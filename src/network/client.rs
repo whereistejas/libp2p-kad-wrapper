@@ -73,6 +73,7 @@ fn handle_client_event(client: &mut Client, event: ClientEvent) -> Result<(), Bo
     match event {
         ClientEvent::StartListening(addr) => {
             // Here, we should pass the `addr` to the EventLoop.
+            Ok(())
         }
         ClientEvent::DialAnother(addr) => todo!(),
         ClientEvent::StartProviding => todo!(),
