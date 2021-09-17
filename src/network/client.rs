@@ -6,22 +6,27 @@ use super::{core, eventloop};
 // TODO:
 // For testing purposes, we will need a way to trigger events on the client side, a mock.
 
-struct Client {
+pub struct Client {
     // Is this node a bootnode, if yes, skip boot-loading
     bootnode: bool,
 }
 
-trait ClientInterface {
-    // Start listening on a given MultiAddr
-    fn listen(&mut self, addr: Multiaddr) -> Result<(), BoxedError>;
+impl Client {
+    pub fn new(bootnode: bool) -> Self {
+        Self { bootnode }
+    }
 
-    // Dial a specific peer.
-    fn dial(&mut self, addr: Multiaddr) -> Result<(), BoxedError>;
+    pub fn listen(&mut self, addr: Option<Multiaddr>) -> Result<(), BoxedError> {
+        handle_client_event(self, ClientEvent::StartListening(addr))
+    }
 
-    // The best thing to do here would be to give a path here.
-    // NOTE: In the specific context of the spartan-farmer, we will want the ability to define
-    // specific pieces/chunks of the plot here.
-    fn provide(&mut self, filename: String) -> Result<(), BoxedError>;
+    fn provide(&mut self, filename: String) -> Result<(), BoxedError> {
+        todo!()
+    }
+
+    fn dial(&mut self, addr: Multiaddr) -> Result<(), BoxedError> {
+        todo!()
+    }
 }
 
 enum ClientEvent {
@@ -35,17 +40,11 @@ enum ClientEvent {
     SeekSomething,
 }
 
-impl ClientInterface for Client {
-    fn listen(&mut self, addr: Multiaddr) -> Result<(), BoxedError> {
-        todo!()
-    }
-
-    fn provide(&mut self, filename: String) -> Result<(), BoxedError> {
-        todo!()
-    }
-
-    fn dial(&mut self, addr: Multiaddr) -> Result<(), BoxedError> {
-        todo!()
+fn handle_client_event(client: &mut Client, event: ClientEvent) -> Result<(), BoxedError> {
+    match event {
+        ClientEvent::StartListening(addr) => todo!(),
+        ClientEvent::DialAnother(addr) => todo!(),
+        ClientEvent::StartProviding => todo!(),
+        ClientEvent::SeekSomething => todo!(),
     }
 }
-

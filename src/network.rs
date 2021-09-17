@@ -15,7 +15,7 @@ use libp2p::{Multiaddr, PeerId, Swarm};
 // Stuff needed for general plumbing.
 type BoxedError = Box<dyn std::error::Error>;
 
-// This is the event loopm the client API will interact with.
+// This is the event loop the client API will interact with.
 mod eventloop;
 // The core module defines the `ComposedBehaviour` and `ComposedEvent`
 mod core;
