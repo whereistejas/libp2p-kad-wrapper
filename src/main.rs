@@ -7,7 +7,9 @@ use network::client::{Client, ClientConfig};
 // network/client.rs
 
 fn main() {
-    let config = ClientConfig { bootnode: false };
+    let config = ClientConfig {
+        bootstrap_node: false,
+    };
 
     let mut client = Client::with_config(config);
 

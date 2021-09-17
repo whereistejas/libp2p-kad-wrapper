@@ -10,8 +10,8 @@ use log::info;
 // For testing purposes, we will need a way to trigger events on the client side, a mock.
 
 pub struct ClientConfig {
-    // If this node a bootnode skip boot-loading
-    pub bootnode: bool,
+    // If this node a bootstrap_node skip boot-loading
+    pub bootstrap_node: bool,
 }
 
 pub struct Client {}
@@ -28,9 +28,9 @@ impl Client {
     }
 
     pub fn with_config(config: ClientConfig) -> Self {
-        if config.bootnode {
-            // TODO: Add stuff to do with the bootnode parameter.
-            info!("This is a bootnode.");
+        if config.bootstrap_node {
+            // TODO: Add stuff to do with the bootstrap_node parameter.
+            info!("This is a bootstrap node.");
         }
 
         Self {}
