@@ -4,7 +4,6 @@ authors = ["Tejas Sanap <sanap.tejas@gmail.com>"]
 version = "0.1.0"
 edition = "2021"
 
-[dependencies.libp2p]
-version = "0.39.1"
-default-features = true
-features = [ "tcp-tokio" ]
+[dependencies]
+libp2p = { version = "0.39.1", default-features = true, features = [ "tcp-tokio" ] }
+log = "0.4.14"

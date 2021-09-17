@@ -3,17 +3,37 @@ use super::*;
 // The core module gives use the core objects that will interact with the eventloop.
 use super::{core, eventloop};
 
+// Logging
+use log::info;
+
 // TODO:
 // For testing purposes, we will need a way to trigger events on the client side, a mock.
 
-pub struct Client {
-    // Is this node a bootnode, if yes, skip boot-loading
-    bootnode: bool,
+pub struct ClientConfig {
+    // If this node a bootnode skip boot-loading
+    pub bootnode: bool,
+}
+
+pub struct Client {}
+
+impl Default for Client {
+    fn default() -> Self {
+        Self {}
+    }
 }
 
 impl Client {
-    pub fn new(bootnode: bool) -> Self {
-        Self { bootnode }
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    pub fn with_config(config: ClientConfig) -> Self {
+        if config.bootnode {
+            // TODO: Add stuff to do with the bootnode parameter.
+            info!("This is a bootnode.");
+        }
+
+        Self {}
     }
 
     pub fn listen(&mut self, addr: Option<Multiaddr>) -> Result<(), BoxedError> {
