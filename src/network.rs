@@ -21,4 +21,4 @@ mod eventloop;
 mod core;
 
 // Exposed API.
-pub(crate) mod client;
+pub mod client;

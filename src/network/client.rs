@@ -49,11 +49,11 @@ impl Client {
         handle_client_event(self, ClientEvent::StartListening(addr))
     }
 
-    fn provide(&mut self, filename: String) -> Result<(), BoxedError> {
+    pub fn provide(&mut self, filename: String) -> Result<(), BoxedError> {
         todo!()
     }
 
-    fn dial(&mut self, addr: Multiaddr) -> Result<(), BoxedError> {
+    pub fn dial(&mut self, addr: Multiaddr) -> Result<(), BoxedError> {
         todo!()
     }
 }
